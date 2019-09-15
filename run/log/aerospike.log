@@ -1,0 +1,393 @@
+Sep 15 2019 02:24:36 GMT: INFO (as): (as.c:324) <><><><><><><><><><>  Aerospike Community Edition build 4.5.0.5-1-g256f2e7  <><><><><><><><><><>
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) # Aerospike database developer configuration file.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) service {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	run-as-daemon false # To work with gdb, and make console logging visible.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	paxos-single-replica-limit 1 # Number of nodes where the replica count is automatically reduced to 1.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# The number of concurrent connections to the database is limited by
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# proto-fd-max, and by the system's maximum number of open file descriptors.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# See "man limits.conf" for how to set the system's "nofile" limit.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	proto-fd-max 1024
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	work-directory run/work
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	pidfile run/asd.pid
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) mod-lua {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	user-path run/work/usr/udf/lua
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) logging {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# Log file must be an absolute path.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	file run/log/aerospike.log {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	console {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) network {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	service {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		address any
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		port 3000
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	heartbeat {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		mode multicast
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		multicast-group 239.1.99.222
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		port 9918
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		# To use unicast-mesh heartbeats, remove the 3 lines above, and see
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		# aerospike_mesh.conf for alternative.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		interval 150
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		timeout 10
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	fabric {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		port 3001
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	info {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 		port 3003
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) namespace test {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) namespace bar {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# To use file storage backing, comment out the line above and use the
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) 	# following lines instead.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) #	storage-engine device {
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) #		file /opt/aerospike/data/bar.dat
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) #		filesize 16G
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) #		data-in-memory true # Store data in memory in addition to file.
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) #	}
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4063) system file descriptor limit: 65535, proto-fd-max: 1024
+Sep 15 2019 02:24:36 GMT: INFO (hardware): (hardware.c:1987) detected 1 CPU(s), 1 core(s), 1 NUMA node(s)
+Sep 15 2019 02:24:36 GMT: INFO (socket): (socket.c:2821) Node port 3001, node ID bb9da500a3e1600
+Sep 15 2019 02:24:36 GMT: INFO (config): (cfg.c:4106) node-id bb9da500a3e1600
+Sep 15 2019 02:24:36 GMT: FAILED ASSERTION (as): (as.c:515) work directory 'run/work' is not set up properly: No such file or directory
+Sep 15 2019 02:24:36 GMT: WARNING (as): (signal.c:158) SIGINT received, shutting down
+Sep 15 2019 02:24:36 GMT: WARNING (as): (signal.c:161) startup was not complete, exiting immediately
+Sep 15 2019 02:25:21 GMT: INFO (as): (as.c:324) <><><><><><><><><><>  Aerospike Community Edition build 4.5.0.5-1-g256f2e7  <><><><><><><><><><>
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) # Aerospike database developer configuration file.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) service {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	run-as-daemon false # To work with gdb, and make console logging visible.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	paxos-single-replica-limit 1 # Number of nodes where the replica count is automatically reduced to 1.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# The number of concurrent connections to the database is limited by
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# proto-fd-max, and by the system's maximum number of open file descriptors.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# See "man limits.conf" for how to set the system's "nofile" limit.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	proto-fd-max 1024
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	work-directory run/work
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	pidfile run/asd.pid
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) mod-lua {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	user-path run/work/usr/udf/lua
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) logging {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# Log file must be an absolute path.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	file run/log/aerospike.log {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	console {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) network {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	service {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		address any
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		port 3000
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	heartbeat {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		mode multicast
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		multicast-group 239.1.99.222
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		port 9918
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		# To use unicast-mesh heartbeats, remove the 3 lines above, and see
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		# aerospike_mesh.conf for alternative.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		interval 150
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		timeout 10
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	fabric {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		port 3001
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	info {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 		port 3003
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) namespace test {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) namespace bar {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# To use file storage backing, comment out the line above and use the
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) 	# following lines instead.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) #	storage-engine device {
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) #		file /opt/aerospike/data/bar.dat
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) #		filesize 16G
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) #		data-in-memory true # Store data in memory in addition to file.
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) #	}
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4063) system file descriptor limit: 65535, proto-fd-max: 1024
+Sep 15 2019 02:25:21 GMT: INFO (hardware): (hardware.c:1987) detected 1 CPU(s), 1 core(s), 1 NUMA node(s)
+Sep 15 2019 02:25:21 GMT: INFO (socket): (socket.c:2821) Node port 3001, node ID bb9da500a3e1600
+Sep 15 2019 02:25:21 GMT: INFO (config): (cfg.c:4106) node-id bb9da500a3e1600
+Sep 15 2019 02:25:21 GMT: FAILED ASSERTION (as): (as.c:515) Lua user directory 'run/work/usr/udf/lua' is not set up properly: No such file or directory
+Sep 15 2019 02:25:21 GMT: WARNING (as): (signal.c:158) SIGINT received, shutting down
+Sep 15 2019 02:25:21 GMT: WARNING (as): (signal.c:161) startup was not complete, exiting immediately
+Sep 15 2019 02:25:32 GMT: INFO (as): (as.c:324) <><><><><><><><><><>  Aerospike Community Edition build 4.5.0.5-1-g256f2e7  <><><><><><><><><><>
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) # Aerospike database developer configuration file.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) service {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	run-as-daemon false # To work with gdb, and make console logging visible.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	paxos-single-replica-limit 1 # Number of nodes where the replica count is automatically reduced to 1.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# The number of concurrent connections to the database is limited by
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# proto-fd-max, and by the system's maximum number of open file descriptors.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# See "man limits.conf" for how to set the system's "nofile" limit.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	proto-fd-max 1024
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	work-directory run/work
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	pidfile run/asd.pid
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) mod-lua {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	user-path run/work/usr/udf/lua
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) logging {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# Log file must be an absolute path.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	file run/log/aerospike.log {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	console {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) network {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	service {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		address any
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		port 3000
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	heartbeat {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		mode multicast
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		multicast-group 239.1.99.222
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		port 9918
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		# To use unicast-mesh heartbeats, remove the 3 lines above, and see
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		# aerospike_mesh.conf for alternative.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		interval 150
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		timeout 10
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	fabric {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		port 3001
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	info {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 		port 3003
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) namespace test {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) namespace bar {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# To use file storage backing, comment out the line above and use the
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) 	# following lines instead.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) #	storage-engine device {
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) #		file /opt/aerospike/data/bar.dat
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) #		filesize 16G
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) #		data-in-memory true # Store data in memory in addition to file.
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) #	}
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4063) system file descriptor limit: 65535, proto-fd-max: 1024
+Sep 15 2019 02:25:32 GMT: INFO (hardware): (hardware.c:1987) detected 1 CPU(s), 1 core(s), 1 NUMA node(s)
+Sep 15 2019 02:25:32 GMT: INFO (socket): (socket.c:2821) Node port 3001, node ID bb9da500a3e1600
+Sep 15 2019 02:25:32 GMT: INFO (config): (cfg.c:4106) node-id bb9da500a3e1600
+Sep 15 2019 02:25:32 GMT: FAILED ASSERTION (as): (as.c:515) system metadata directory 'run/work/smd' is not set up properly: No such file or directory
+Sep 15 2019 02:25:32 GMT: WARNING (as): (signal.c:158) SIGINT received, shutting down
+Sep 15 2019 02:25:32 GMT: WARNING (as): (signal.c:161) startup was not complete, exiting immediately
+Sep 15 2019 02:25:41 GMT: INFO (as): (as.c:324) <><><><><><><><><><>  Aerospike Community Edition build 4.5.0.5-1-g256f2e7  <><><><><><><><><><>
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) # Aerospike database developer configuration file.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) service {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	run-as-daemon false # To work with gdb, and make console logging visible.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	paxos-single-replica-limit 1 # Number of nodes where the replica count is automatically reduced to 1.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# The number of concurrent connections to the database is limited by
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# proto-fd-max, and by the system's maximum number of open file descriptors.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# See "man limits.conf" for how to set the system's "nofile" limit.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	proto-fd-max 1024
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	work-directory run/work
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	pidfile run/asd.pid
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) mod-lua {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	user-path run/work/usr/udf/lua
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) logging {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# Log file must be an absolute path.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	file run/log/aerospike.log {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	console {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		context any info
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) network {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	service {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		address any
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		port 3000
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	heartbeat {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		mode multicast
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		multicast-group 239.1.99.222
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		port 9918
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		# To use unicast-mesh heartbeats, remove the 3 lines above, and see
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		# aerospike_mesh.conf for alternative.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		interval 150
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		timeout 10
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	fabric {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		port 3001
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	info {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 		port 3003
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) namespace test {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) namespace bar {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	replication-factor 2
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	memory-size 4G
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	default-ttl 30d # 30 days, use 0 to never expire/evict.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	storage-engine memory
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# To use file storage backing, comment out the line above and use the
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) 	# following lines instead.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) #	storage-engine device {
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) #		file /opt/aerospike/data/bar.dat
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) #		filesize 16G
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) #		data-in-memory true # Store data in memory in addition to file.
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) #	}
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4040) }
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4063) system file descriptor limit: 65535, proto-fd-max: 1024
+Sep 15 2019 02:25:41 GMT: INFO (hardware): (hardware.c:1987) detected 1 CPU(s), 1 core(s), 1 NUMA node(s)
+Sep 15 2019 02:25:41 GMT: INFO (socket): (socket.c:2821) Node port 3001, node ID bb9da500a3e1600
+Sep 15 2019 02:25:41 GMT: INFO (config): (cfg.c:4106) node-id bb9da500a3e1600
+Sep 15 2019 02:25:41 GMT: INFO (namespace): (namespace_ce.c:87) {test} beginning cold start
+Sep 15 2019 02:25:41 GMT: INFO (namespace): (namespace_ce.c:87) {bar} beginning cold start
+Sep 15 2019 02:25:41 GMT: INFO (as): (as.c:383) initializing services...
+Sep 15 2019 02:25:41 GMT: INFO (tsvc): (thr_tsvc.c:135) 4 transaction queues: starting 4 threads per queue
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:789) updated fabric published address list to {172.17.159.163:3001}
+Sep 15 2019 02:25:41 GMT: INFO (partition): (partition_balance.c:201) {test} 4096 partitions: found 4096 absent, 0 stored
+Sep 15 2019 02:25:41 GMT: INFO (partition): (partition_balance.c:201) {bar} 4096 partitions: found 4096 absent, 0 stored
+Sep 15 2019 02:25:41 GMT: INFO (batch): (batch.c:731) starting 1 batch-index-threads
+Sep 15 2019 02:25:41 GMT: INFO (health): (health.c:319) starting health monitor thread
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:446) starting 8 fabric send threads
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:460) starting 16 fabric rw channel recv threads
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:460) starting 4 fabric ctrl channel recv threads
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:460) starting 4 fabric bulk channel recv threads
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:460) starting 4 fabric meta channel recv threads
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (fabric.c:466) starting fabric accept thread
+Sep 15 2019 02:25:41 GMT: INFO (hb): (hb.c:7229) initializing multicast heartbeat socket: 239.1.99.222:9918
+Sep 15 2019 02:25:41 GMT: INFO (socket): (socket.c:1634) Joining multicast group: 239.1.99.222
+Sep 15 2019 02:25:41 GMT: INFO (hb): (hb.c:7262) mtu of the network is 1500
+Sep 15 2019 02:25:41 GMT: INFO (hb): (socket.c:1670) Started multicast heartbeat endpoint 0.0.0.0:9918
+Sep 15 2019 02:25:41 GMT: INFO (nsup): (thr_nsup.c:1102) starting namespace supervisor threads
+Sep 15 2019 02:25:41 GMT: INFO (service): (service.c:646) starting reaper thread
+Sep 15 2019 02:25:41 GMT: INFO (service): (socket.c:847) Started client endpoint 0.0.0.0:3000
+Sep 15 2019 02:25:41 GMT: INFO (service): (service.c:148) starting 1 service threads
+Sep 15 2019 02:25:41 GMT: INFO (service): (service.c:157) starting accept thread
+Sep 15 2019 02:25:41 GMT: INFO (info-port): (thr_info_port.c:298) starting info port thread
+Sep 15 2019 02:25:41 GMT: INFO (fabric): (socket.c:847) Started fabric endpoint 0.0.0.0:3001
+Sep 15 2019 02:25:41 GMT: INFO (info-port): (socket.c:847) Started info endpoint 0.0.0.0:3003
+Sep 15 2019 02:25:41 GMT: INFO (as): (as.c:428) service ready: soon there will be cake!
+Sep 15 2019 02:25:43 GMT: INFO (clustering): (clustering.c:6356) principal node - forming new cluster with succession list: bb9da500a3e1600
+Sep 15 2019 02:25:43 GMT: INFO (clustering): (clustering.c:5795) applied new cluster key 464c3e20456c
+Sep 15 2019 02:25:43 GMT: INFO (clustering): (clustering.c:5797) applied new succession list bb9da500a3e1600
+Sep 15 2019 02:25:43 GMT: INFO (clustering): (clustering.c:5799) applied cluster size 1
+Sep 15 2019 02:25:43 GMT: INFO (exchange): (exchange.c:2288) data exchange started with cluster key 464c3e20456c
+Sep 15 2019 02:25:43 GMT: INFO (exchange): (exchange.c:3150) received commit command from principal node bb9da500a3e1600
+Sep 15 2019 02:25:43 GMT: INFO (exchange): (exchange.c:3113) data exchange completed with cluster key 464c3e20456c
+Sep 15 2019 02:25:43 GMT: INFO (partition): (partition_balance.c:976) {test} replication factor is 1
+Sep 15 2019 02:25:43 GMT: INFO (partition): (partition_balance.c:948) {test} rebalanced: expected-migrations (0,0,0) fresh-partitions 4096
+Sep 15 2019 02:25:43 GMT: INFO (partition): (partition_balance.c:976) {bar} replication factor is 1
+Sep 15 2019 02:25:43 GMT: INFO (partition): (partition_balance.c:948) {bar} rebalanced: expected-migrations (0,0,0) fresh-partitions 4096
+Sep 15 2019 02:25:50 GMT: WARNING (as): (signal.c:158) SIGINT received, shutting down
+Sep 15 2019 02:25:50 GMT: INFO (storage): (storage.c:774) initiating storage shutdown ...
+Sep 15 2019 02:25:50 GMT: INFO (storage): (storage.c:775) flushing data to storage ...
+Sep 15 2019 02:25:50 GMT: INFO (storage): (storage.c:794) completed flushing to storage
+Sep 15 2019 02:25:50 GMT: INFO (as): (as.c:457) finished clean shutdown - exiting
